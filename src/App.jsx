@@ -1,7 +1,9 @@
+import Navbar from "./components/Header.jsx/Navbar";
+
 function App() {
   return (
     <>
-      <h1>Hi</h1>
+      <Navbar />
     </>
   );
 }
