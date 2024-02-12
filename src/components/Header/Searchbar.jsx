@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import searchIcon from "../../assets/icons/search.svg";
+import { CategoryContext } from "../../context";
 
 const Searchbar = () => {
   const [isShow, setIsShow] = useState(false);
+  const { setSearchTerm, setSelectedCategory } = useContext(CategoryContext);
 
   // const doSearch = useDebounce((term) => {
   //   const fetchedLocation = getLocationByName(term);
@@ -11,8 +13,9 @@ const Searchbar = () => {
 
   const handleChange = (e) => {
     const value = e.target.value;
+    setSelectedCategory("");
     // doSearch(value);
-    console.log(value);
+    setSearchTerm(value);
   };
 
   return (

@@ -2,42 +2,47 @@ import { useContext } from "react";
 import { CategoryContext } from "../../context";
 
 const Categories = () => {
-  const { setSelectedCategory } = useContext(CategoryContext);
+  const { setSelectedCategory, setSearchTerm } = useContext(CategoryContext);
+
+  const handleCategory = (category) => {
+    setSearchTerm("");
+    setSelectedCategory(category);
+  };
   return (
     <div className="container mx-auto mt-6">
       <ul className="flex flex-wrap items-center justify-center gap-5 text-xs font-semibold lg:text-base">
         <li>
-          <a href="#" onClick={() => setSelectedCategory("general")}>
+          <a href="#" onClick={() => handleCategory("general")}>
             General
           </a>
         </li>
         <li>
-          <a href="#" onClick={() => setSelectedCategory("business")}>
+          <a href="#" onClick={() => handleCategory("business")}>
             Business
           </a>
         </li>
         <li>
-          <a href="#" onClick={() => setSelectedCategory("entertainment")}>
+          <a href="#" onClick={() => handleCategory("entertainment")}>
             Entertainment
           </a>
         </li>
         <li>
-          <a href="#" onClick={() => setSelectedCategory("health")}>
+          <a href="#" onClick={() => handleCategory("health")}>
             Health
           </a>
         </li>
         <li>
-          <a href="#" onClick={() => setSelectedCategory("science")}>
+          <a href="#" onClick={() => handleCategory("science")}>
             Science
           </a>
         </li>
         <li>
-          <a href="#" onClick={() => setSelectedCategory("sports")}>
+          <a href="#" onClick={() => handleCategory("sports")}>
             Sports
           </a>
         </li>
         <li>
-          <a href="#" onClick={() => setSelectedCategory("technology")}>
+          <a href="#" onClick={() => handleCategory("technology")}>
             Technology
           </a>
         </li>

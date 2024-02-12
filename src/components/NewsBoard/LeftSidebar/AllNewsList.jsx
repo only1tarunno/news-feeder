@@ -5,11 +5,8 @@ const AllNewsList = () => {
   const { news } = useNewsQuery();
   return (
     <>
-      {news?.map((item) => (
-        <div
-          key={item?.title}
-          className="col-span-12 md:col-span-6 lg:col-span-4"
-        >
+      {news?.map((item, indx) => (
+        <div key={indx} className="col-span-12 md:col-span-6 lg:col-span-4">
           {/* <!-- info --> */}
           <div className="col-span-12 md:col-span-4">
             <a href="#">
