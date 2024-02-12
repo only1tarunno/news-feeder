@@ -19,7 +19,7 @@ const AllNewsList = () => {
             </a>
             <p className="text-base text-[#292219]">{item?.content}</p>
             <p className="mt-5 text-base text-[#94908C]">
-              Published: {getFormattedDate(item?.publishedAt)}
+              {getFormattedDate(item?.publishedAt)}
             </p>
           </div>
         </div>

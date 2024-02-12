@@ -9,7 +9,7 @@ const RightSidebar = () => {
         {/* <!-- news item --> */}
         {news?.slice(-4)?.map((item) => (
           <div key={item?.title} className="col-span-12 mb-6 md:col-span-8">
-            <img className="w-full" src={item?.urlToImage} alt="thumb" />
+            <img className="w-full pt-4" src={item?.urlToImage} alt="thumb" />
             {/* <!-- info --> */}
             <div className="col-span-12 mt-6 md:col-span-4">
               <a href="#">
@@ -19,7 +19,7 @@ const RightSidebar = () => {
               </a>
               <p className="text-base text-[#292219]">{item?.description}</p>
               <p className="mt-5 text-base text-[#94908C]">
-                Published: {getFormattedDate(item?.publishedAt)}
+                {getFormattedDate(item?.publishedAt)}
               </p>
             </div>
           </div>

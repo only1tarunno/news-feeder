@@ -15,7 +15,7 @@ const FeaturedNews = () => {
         </a>
         <p className="text-base text-[#5C5955]">{description}</p>
         <p className="mt-5 text-base text-[#5C5955]">
-          Published: {getFormattedDate(publishedAt)}
+          {getFormattedDate(publishedAt)}
         </p>
       </div>
       {/* <!-- thumb --> */}
