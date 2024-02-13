@@ -1,4 +1,16 @@
+const formatDate = (date) => {
+  const options = {
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  };
+  return new Date(date).toLocaleDateString("en-US", options);
+};
+
 const Time = () => {
+  const currentDate = formatDate(Date.now());
+
   return (
     <div className="flex items-center space-x-4">
       <svg
@@ -51,7 +63,7 @@ const Time = () => {
           strokeLinejoin="round"
         />
       </svg>
-      <span>Thursday, February 25, 2021</span>
+      <span>{currentDate}</span>
     </div>
   );
 };
