@@ -1,11 +1,11 @@
 import useNewsQuery from "../../../hooks/useNewsQuery";
 import { getFormattedDate } from "../../../utils/date-utils";
-import demoImg from "../../../assets/thumb_lg.png";
 
 const FeaturedNews = () => {
   const { news } = useNewsQuery();
 
-  const { title, description, urlToImage, author, publishedAt } = news[0] || {};
+  const { title, description, urlToImage, author, publishedAt } =
+    news[news.length - 1] || {};
 
   return (
     <div className="col-span-12 grid grid-cols-12 gap-4">
@@ -21,11 +21,7 @@ const FeaturedNews = () => {
       </div>
       {/* <!-- thumb --> */}
       <div className="col-span-12 lg:col-span-8">
-        <img
-          className="w-full"
-          src={urlToImage ? urlToImage : demoImg}
-          alt="thumb"
-        />
+        <img className="w-full" src={urlToImage} alt="thumb" />
         <p className="mt-5 text-base text-[#5C5955]">Author: {author}</p>
       </div>
     </div>
