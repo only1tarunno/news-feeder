@@ -49,28 +49,26 @@ const useNewsQuery = () => {
     }
   }, [selectedCategory, searchTerm]);
 
-  const featureNews =
-    news.length > 0
-      ? news.find((item, index) => index === news.length - 1)
-      : null;
+  // Remove duplicate articles based on title
+  const uniqueNews = news.filter(
+    (item, index, self) =>
+      index === self.findIndex((i) => i.title === item.title)
+  );
 
-  // Filter out feature news from right sidebar news
-  const rightSidebarNews =
-    news.length > 1
-      ? news.filter(
-          (item, index) => index < 4 && item.title !== featureNews?.title
-        )
-      : [];
+  // Determine sidebar and feature allocation based on news count
+  let featureNews = null;
+  let rightSidebarNews = null;
+  let leftSidebarNews = [];
 
-  // Filter out feature news and right sidebar news from left sidebar news
-  const leftSidebarNews =
-    news.length > 1
-      ? news.filter(
-          (item) =>
-            item.title !== featureNews?.title &&
-            !rightSidebarNews.includes(item)
-        )
-      : [];
+  if (uniqueNews.length > 0) {
+    if (uniqueNews.length > 4) {
+      featureNews = uniqueNews.pop();
+      rightSidebarNews = uniqueNews.slice(0, 4);
+      leftSidebarNews = uniqueNews.slice(4);
+    } else {
+      leftSidebarNews = uniqueNews;
+    }
+  }
 
   return {
     featureNews,
