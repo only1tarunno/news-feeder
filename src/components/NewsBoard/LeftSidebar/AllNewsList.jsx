@@ -2,10 +2,10 @@ import useNewsQuery from "../../../hooks/useNewsQuery";
 import { getFormattedDate } from "../../../utils/date-utils";
 
 const AllNewsList = () => {
-  const { news } = useNewsQuery();
+  const { leftSidebarNews } = useNewsQuery();
   return (
     <>
-      {news?.map((item, indx) => (
+      {leftSidebarNews?.map((item, indx) => (
         <div key={indx} className="col-span-12 md:col-span-6 lg:col-span-4">
           {/* <!-- info --> */}
           <div className="col-span-12 md:col-span-4">

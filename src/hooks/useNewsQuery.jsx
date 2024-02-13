@@ -5,6 +5,7 @@ const useNewsQuery = () => {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  // for checking value is available or not from searchbar or navigation clicked or not
   const { selectedCategory, searchTerm } = useContext(CategoryContext);
 
   const fetchNewsData = async (queryType, queryValue) => {
@@ -38,15 +39,48 @@ const useNewsQuery = () => {
 
   useEffect(() => {
     if (selectedCategory) {
+      // check if any category is clicked
       fetchNewsData("category", selectedCategory);
     } else if (searchTerm) {
+      // check any keyword is in the search bar
       fetchNewsData("search", searchTerm);
     } else {
       fetchNewsData();
     }
   }, [selectedCategory, searchTerm]);
 
-  return { news, loading, error, setLoading };
+  const featureNews =
+    news.length > 0
+      ? news.find((item, index) => index === news.length - 1)
+      : null;
+
+  // Filter out feature news from right sidebar news
+  const rightSidebarNews =
+    news.length > 1
+      ? news.filter(
+          (item, index) => index < 4 && item.title !== featureNews?.title
+        )
+      : [];
+
+  // Filter out feature news and right sidebar news from left sidebar news
+  const leftSidebarNews =
+    news.length > 1
+      ? news.filter(
+          (item) =>
+            item.title !== featureNews?.title &&
+            !rightSidebarNews.includes(item)
+        )
+      : [];
+
+  return {
+    featureNews,
+    rightSidebarNews,
+    leftSidebarNews,
+    news,
+    loading,
+    error,
+    setLoading,
+  };
 };
 
 export default useNewsQuery;

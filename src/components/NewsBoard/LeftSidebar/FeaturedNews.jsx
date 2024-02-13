@@ -2,10 +2,10 @@ import useNewsQuery from "../../../hooks/useNewsQuery";
 import { getFormattedDate } from "../../../utils/date-utils";
 
 const FeaturedNews = () => {
-  const { news } = useNewsQuery();
+  const { featureNews } = useNewsQuery();
 
   const { title, description, urlToImage, author, publishedAt } =
-    news[news.length - 1] || {};
+    featureNews || {};
 
   return (
     <div className="col-span-12 grid grid-cols-12 gap-4">

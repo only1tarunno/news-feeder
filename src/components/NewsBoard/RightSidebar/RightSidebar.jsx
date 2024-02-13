@@ -2,12 +2,12 @@ import useNewsQuery from "../../../hooks/useNewsQuery";
 import { getFormattedDate } from "../../../utils/date-utils";
 
 const RightSidebar = () => {
-  const { news } = useNewsQuery();
+  const { rightSidebarNews } = useNewsQuery();
   return (
     <div className="col-span-12 self-start xl:col-span-4">
       <div className="space-y-6 divide-y-2 divide-[#D5D1C9]">
         {/* <!-- news item --> */}
-        {news?.slice(-4)?.map((item) => (
+        {rightSidebarNews?.map((item) => (
           <div key={item?.title} className="col-span-12 mb-6 md:col-span-8">
             <img className="w-full pt-4" src={item?.urlToImage} alt="thumb" />
             {/* <!-- info --> */}
