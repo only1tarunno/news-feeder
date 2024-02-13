@@ -1,21 +1,20 @@
 import { useContext, useState } from "react";
 import searchIcon from "../../assets/icons/search.svg";
 import { CategoryContext } from "../../context";
+import useDebounce from "../../hooks/useDebouncing";
 
 const Searchbar = () => {
   const [isShow, setIsShow] = useState(false);
   const { setSearchTerm, setSelectedCategory } = useContext(CategoryContext);
 
-  // const doSearch = useDebounce((term) => {
-  //   const fetchedLocation = getLocationByName(term);
-  //   setSelectedLocation({ ...fetchedLocation });
-  // }, 500);
+  const doSearch = useDebounce((term) => {
+    setSearchTerm(term);
+  }, 1000);
 
   const handleChange = (e) => {
     const value = e.target.value;
     setSelectedCategory("");
-    // doSearch(value);
-    setSearchTerm(value);
+    doSearch(value);
   };
 
   return (

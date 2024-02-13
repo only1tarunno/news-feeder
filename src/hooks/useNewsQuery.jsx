@@ -46,7 +46,7 @@ const useNewsQuery = () => {
     }
   }, [selectedCategory, searchTerm]);
 
-  return { news, loading, error };
+  return { news, loading, error, setLoading };
 };
 
 export default useNewsQuery;
