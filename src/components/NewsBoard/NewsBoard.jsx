@@ -5,7 +5,7 @@ import RightSidebar from "./RightSidebar/RightSidebar";
 
 const NewsBoard = () => {
   const { news, loading } = useNewsQuery();
-
+  // xvx
   return (
     <main className="my-10 lg:my-14">
       {loading ? (
